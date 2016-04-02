@@ -30,5 +30,37 @@ struct node{
 
 
 int between_days(struct node *date1head, struct node *date2head){
-	return -1;
+	
+	if ((date1head == NULL) || (date2head == NULL)){
+		return -1;
+	}
+
+	int day1 = 0, m1 = 0, y1 = 0, day2 = 0, m2 = 0, y2 = 0, count = 0, nod = 0, temp;
+	while (date1head != NULL){
+		if (0>=count < 2){
+			day1 = day1 * 10 + date1head->data;
+			day2 = day2 * 10 + date2head->data;
+			count += 1;
+
+		}
+		if (2 >= count < 4){
+			m1 = m1 * 10 + date1head->data;
+			m2 = m2 * 10 + date2head->data;
+			count += 1;
+		}
+		if (4 <= count < 8){
+			y1 = y1 * 10 + date1head->data;
+			y2 = y2 * 10 + date2head->data;
+			count += 1;
+		}
+		date1head = date1head->next;
+	}
+	if (day1 - day2 != 0){
+		temp = day1 - day2;
+		if (temp < 0){
+			temp = temp*(-1);
+		}
+		nod += temp;
+	}
+	return nod;
 }
